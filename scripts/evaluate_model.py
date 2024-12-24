@@ -6,9 +6,11 @@ import numpy as np
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(PROJECT_ROOT)
 from models.cnn_lstm_model import CNNLSTM
+from models.cnn_lstm_attention_model import CNNLSTMWithAttention
 from scripts.prepare_data import prepare_data
 
 # Path to the saved model
+#model_path = "models/cnn_lstm_model.pth"
 model_path = "models/cnn_lstm_model.pth"
 
 # Path to cleaned data

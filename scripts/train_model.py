@@ -7,6 +7,7 @@ from torch.utils.data import DataLoader, TensorDataset
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(PROJECT_ROOT)
 from models.cnn_lstm_model import CNNLSTM
+from models.cnn_lstm_attention_model import CNNLSTMWithAttention
 from scripts.prepare_data import prepare_data
 
 # Load prepared data
@@ -37,6 +38,7 @@ output_size = 1
 dropout = 0.2
 
 model = CNNLSTM(input_size, cnn_filters, lstm_hidden_size, num_layers, output_size, dropout)
+#model = CNNLSTMWithAttention(input_size, cnn_filters, lstm_hidden_size, num_layers, output_size, dropout)
 
 # Loss function and optimizer
 criterion = nn.MSELoss()  # Mean Squared Error for regression
@@ -77,4 +79,5 @@ for epoch in range(num_epochs):
 
 # Save the model
 torch.save(model.state_dict(), "models/cnn_lstm_model.pth")
+#torch.save(model.state_dict(), "models/cnn_lstm_attention_model.pth")
 print("Model saved successfully!")
