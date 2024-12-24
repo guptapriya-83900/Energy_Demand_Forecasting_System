@@ -1,12 +1,17 @@
+import os
+import sys
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(PROJECT_ROOT)
 from models.cnn_lstm_model import CNNLSTM
 from scripts.prepare_data import prepare_data
 
 # Load prepared data
-cleaned_data_path = "../data/processed/cleaned_energy_data.csv"
+#cleaned_data_path = "C:/Users/gupta_k72mbnp/OneDrive/Documents/GitHub/Energy_Demand_Forecasting_System/data/processed/cleaned_energy_data.csv"
+cleaned_data_path = "data/processed/cleaned_energy_data.csv"
 sequence_length = 24
 X_train, X_test, y_train, y_test, scaler = prepare_data(cleaned_data_path, sequence_length)
 
@@ -71,5 +76,5 @@ for epoch in range(num_epochs):
     print(f"Epoch {epoch + 1}/{num_epochs}, Train Loss: {train_loss / len(train_loader):.4f}, Val Loss: {val_loss / len(test_loader):.4f}")
 
 # Save the model
-torch.save(model.state_dict(), "../models/cnn_lstm_model.pth")
+torch.save(model.state_dict(), "models/cnn_lstm_model.pth")
 print("Model saved successfully!")
