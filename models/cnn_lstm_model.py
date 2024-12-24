@@ -13,7 +13,7 @@ class CNNLSTM(nn.Module):
             nn.Dropout(dropout)
         )
 
-        # LSTM layers
+        # LSTM Network layers
         self.lstm = nn.LSTM(
             input_size=cnn_filters,
             hidden_size=lstm_hidden_size,
