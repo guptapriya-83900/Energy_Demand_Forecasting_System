@@ -21,6 +21,8 @@ def create_sequences_for_next_day(data, sequence_length):
 
     return np.array(sequences), np.array(targets)
 
+
+#Preparing Data to feed into the network
 def prepare_data(file_path, sequence_length=24, test_split=0.2):
     """Prepare the data for training and testing for next-day predictions."""
     # Load the cleaned data
