@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import os
 import sys
-# Add the project root to sys.path to allow imports from scripts
+
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(PROJECT_ROOT)
 from scripts.preprocess_data import preprocess_data,save_cleaned_data

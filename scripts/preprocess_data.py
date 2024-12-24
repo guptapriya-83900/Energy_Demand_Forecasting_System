@@ -8,7 +8,7 @@ def preprocess_data(df):
     # Convert 'period' to datetime
     df['period'] = pd.to_datetime(df['period'])
     # Remove rows with negative 'value'
-       # Convert 'value' column to numeric (forcing errors to NaN)
+     
     df['value'] = pd.to_numeric(df['value'], errors='coerce')
     
     # Remove rows with missing or invalid 'value'
