@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
 
-class CNNLSTMWithAttention(nn.Module):
+class CNNLSTM(nn.Module):
     def __init__(self, input_size, cnn_filters, lstm_hidden_size, num_layers, output_size, dropout=0.2):
-        super(CNNLSTMWithAttention, self).__init__()
+        super(CNNLSTM, self).__init__()
 
         # CNN layers
         self.cnn = nn.Sequential(
@@ -13,7 +13,7 @@ class CNNLSTMWithAttention(nn.Module):
             nn.Dropout(dropout)
         )
 
-        # Stacked LSTM layers
+        # LSTM Network layers
         self.lstm = nn.LSTM(
             input_size=cnn_filters,
             hidden_size=lstm_hidden_size,
@@ -21,9 +21,6 @@ class CNNLSTMWithAttention(nn.Module):
             batch_first=True,
             dropout=dropout
         )
-
-        # Attention weights layer
-        self.attention = nn.Linear(lstm_hidden_size, 1)
 
         # Fully connected output layer
         self.fc = nn.Linear(lstm_hidden_size, output_size)
@@ -37,14 +34,11 @@ class CNNLSTMWithAttention(nn.Module):
         x = x.transpose(1, 2)
 
         # LSTM forward pass
-        lstm_out, _ = self.lstm(x)
+        x, _ = self.lstm(x)
 
-        # Compute attention weights
-        attention_weights = torch.softmax(self.attention(lstm_out), dim=1)
-
-        # Compute weighted sum of LSTM outputs
-        context_vector = torch.sum(attention_weights * lstm_out, dim=1)
+        # Take the last output from LSTM
+        x = x[:, -1, :]
 
         # Fully connected layer
-        output = self.fc(context_vector)
+        output = self.fc(x)
         return output
