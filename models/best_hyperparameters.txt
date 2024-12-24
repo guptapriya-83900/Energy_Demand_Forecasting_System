@@ -1,0 +1,4 @@
+cnn_filters: 64
+lstm_hidden_size: 112
+dropout: 0.5
+learning_rate: 0.0019512053461741875
