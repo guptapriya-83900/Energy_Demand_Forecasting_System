@@ -26,11 +26,12 @@ y_test = torch.tensor(y_test, dtype=torch.float32)
 
 # Initialize the model (use the same parameters as in training)
 input_size = 1
-cnn_filters = 16
-lstm_hidden_size = 32
+cnn_filters = 64
+lstm_hidden_size = 112
 num_layers = 2
 output_size = 1
-dropout = 0.2
+dropout = 0.5
+learning_rate = 0.0019512053461741875
 
 model = CNNLSTM(input_size, cnn_filters, lstm_hidden_size, num_layers, output_size, dropout)
 

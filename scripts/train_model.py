@@ -31,18 +31,19 @@ test_loader = DataLoader(test_dataset, batch_size=batch_size)
 
 # Initialize model
 input_size = 1
-cnn_filters = 16
-lstm_hidden_size = 32
+cnn_filters = 64
+lstm_hidden_size = 112
 num_layers = 2
 output_size = 1
-dropout = 0.2
+dropout = 0.5
+learning_rate = 0.0019512053461741875
 
-model = CNNLSTM(input_size, cnn_filters, lstm_hidden_size, num_layers, output_size, dropout)
+model = CNNLSTM(input_size=input_size, cnn_filters=cnn_filters, lstm_hidden_size=lstm_hidden_size, num_layers=num_layers, output_size=output_size, dropout=dropout)
 #model = CNNLSTMWithAttention(input_size, cnn_filters, lstm_hidden_size, num_layers, output_size, dropout)
 
 # Loss function and optimizer
 criterion = nn.MSELoss()  # Mean Squared Error for regression
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
 # Training loop
 num_epochs = 50
