@@ -82,3 +82,9 @@ for epoch in range(num_epochs):
 torch.save(model.state_dict(), "models/cnn_lstm_model.pth")
 #torch.save(model.state_dict(), "models/cnn_lstm_attention_model.pth")
 print("Model saved successfully!")
+
+# Export the trained model for TorchServe
+example_input = torch.rand(1, sequence_length, 1)  # Example input for tracing
+traced_model = torch.jit.trace(model, example_input)
+torch.jit.save(traced_model, "models/cnn_lstm_model_optimized.pt")
+print("Model traced and saved for TorchServe!")
