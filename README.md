@@ -31,8 +31,20 @@ Forecast electricity demand for the **next 24 hours** based on hourly consumptio
 ---
 
 ## 🗂️ Project Structure
-Energy_Demand_Forecasting_System/ ├── data/ │ └── processed/ │ └── cleaned_energy_data.csv ├── models/ │ ├── cnn_lstm_model.pth │ └── cnn_lstm_model_optimized.pt ├── model_store/ │ └── cnn_lstm_model.mar ├── scripts/ │ ├── fetch_data.py │ ├── preprocess_data.py │ ├── train_model.py │ ├── tune_hyperparameters.py │ └── handler.py
-
+Energy_Demand_Forecasting_System/
+├── data/
+│   └── processed/                # Cleaned dataset
+├── models/
+│   ├── cnn_lstm_model.pth        # Trained model
+│   ├── cnn_lstm_model_optimized.pt  # Traced model for TorchServe
+├── model_store/
+│   └── cnn_lstm_model.mar        # TorchServe-ready model archive
+├── scripts/
+│   ├── fetch_data.py             # EIA API integration
+│   ├── preprocess_data.py        # Data cleaning + transformation
+│   ├── train_model.py            # Model training + export
+│   ├── tune_hyperparameters.py   # Optuna-based tuning
+│   └── handler.py                # TorchServe custom handler
 
 ---
 
