@@ -32,7 +32,9 @@ Forecast electricity demand for the **next 24 hours** based on hourly consumptio
 
 ## 🗂️ Project Structure
 Energy_Demand_Forecasting_System/
+
 ├── data/
+
 │   └── processed/                # Cleaned dataset
 ├── models/
 │   ├── cnn_lstm_model.pth        # Trained model
