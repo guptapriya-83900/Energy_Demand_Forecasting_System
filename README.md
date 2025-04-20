@@ -36,16 +36,27 @@ Energy_Demand_Forecasting_System/
 ├── data/
 
 │   └── processed/                # Cleaned dataset
+
 ├── models/
+
 │   ├── cnn_lstm_model.pth        # Trained model
+
 │   ├── cnn_lstm_model_optimized.pt  # Traced model for TorchServe
+
 ├── model_store/
+
 │   └── cnn_lstm_model.mar        # TorchServe-ready model archive
+
 ├── scripts/
+
 │   ├── fetch_data.py             # EIA API integration
+
 │   ├── preprocess_data.py        # Data cleaning + transformation
+
 │   ├── train_model.py            # Model training + export
+
 │   ├── tune_hyperparameters.py   # Optuna-based tuning
+
 │   └── handler.py                # TorchServe custom handler
 
 ---
